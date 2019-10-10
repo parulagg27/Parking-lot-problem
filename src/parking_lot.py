@@ -26,15 +26,10 @@ class ParkingLot(object):
             self.slots[i] = ParkingSpot(slot_no=i, available=True)
         return "Created a parking lot with %s slots" % total_slots
 
-    def _parking_lot_created(self):
-        if not self.slots:
-            print("Create Parking lot first")
-            return False
-        return True
 
     def _find_nearest_available_slot(self):
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            return "Parking lot was not created"
         available_slots = list(filter(lambda x: x.available, self.slots.values()))
 
         if not (available_slots):
@@ -43,8 +38,8 @@ class ParkingLot(object):
 
 
     def park(self, reg_no, color):
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            return "Parking lot was not created"
         available_slot = self._find_nearest_available_slot()
 
         if available_slot is None:
@@ -54,15 +49,17 @@ class ParkingLot(object):
         available_slot.available = False
         return "Allocated slot number: %s" % available_slot.slot_no
 
+
     def leave(self, slot_number_to_be_freed):
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            return "Parking lot was not created"
 
         slot_number_to_be_freed = int(slot_number_to_be_freed)
-        slot_to_be_freed = self.slots[slot_number_to_be_freed]
 
         if slot_number_to_be_freed not in self.slots:
-            return "Invalid Slot No. provided"
+            return "Slot No. doesn't exist"
+
+        slot_to_be_freed = self.slots[slot_number_to_be_freed]
 
         if slot_to_be_freed.available and (slot_to_be_freed.car is None):
             return "No car present at Slot No. %s" % slot_number_to_be_freed
@@ -71,22 +68,21 @@ class ParkingLot(object):
         slot_to_be_freed.available = True
         return "Slot number %s is free" % slot_number_to_be_freed
 
+
     def status(self):
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            print("Parking lot was not created")
         print("Slot No.\tRegistration No   \tColour")
 
         for slot in self.slots.values():
             if not slot.available and slot.car:
                 print("{}   \t\t{}\t\t{}".format(slot.slot_no, slot.car.reg_no, slot.car.color))
 
-    def exit():
-        pass
 
     def registration_numbers_for_cars_with_colour(self, color):
         registration_numbers = []
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            print("Parking lot was not created")
 
         for slot in self.slots.values():
             if not slot.available and slot.car and slot.car.color == color:
@@ -98,8 +94,8 @@ class ParkingLot(object):
 
     def slot_numbers_for_cars_with_colour(self, color):
         slot_numbers = []
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            print("Parking lot was not created")
 
         for slot in self.slots.values():
             if not slot.available and slot.car and slot.car.color == color:
@@ -110,8 +106,8 @@ class ParkingLot(object):
         return ', '.join(slot_numbers)
 
     def slot_number_for_registration_number(self, reg_no):
-        if not self._parking_lot_created:
-            return
+        if not self.slots:
+            print("Parking lot was not created")
 
         for slot in self.slots.values():
             if not slot.available and slot.car and slot.car.reg_no == reg_no:

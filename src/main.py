@@ -2,11 +2,12 @@ from parking_lot import ParkingLot
 import sys
 import os
 import fileinput
+from commands import MyPrompt
 
 
 parking_lot_operations = ParkingLot()
 
-parking_operations_command_mapper = {
+parking_command_param_count_mapper = {
     "create_parking_lot": 1,
     "park": 2,
     "leave": 1,
@@ -26,6 +27,10 @@ def process_input(command_params):
         print("Command not found")
         return
 
+    if len(params) is not parking_command_param_count_mapper[command]:
+        print("Invalid no. of Arguments")
+        return
+
     parking_operation = getattr(parking_lot_operations, command)
     std_out = parking_operation(*params)
     if std_out:
@@ -42,8 +47,8 @@ def process_file(given_file):
 if __name__ == "__main__":
 
     if len(sys.argv) == 1:
-        line = input()
-        process_input(line)
+        p = MyPrompt()
+        p.cmdloop()
 
     elif len(sys.argv) == 2:
         file_exists = process_file(sys.argv[1])
