@@ -19,7 +19,6 @@ class MyPrompt(Cmd):
     def do_park(self, params):
         params = params.strip().split()
         # TODO: Handle cases when: Args not in order, upper-lowercase, incorrect car_no
-        # TODO:- Handle case when: car already exists: TO avoid duplicaate slot allotment
         if not len(params) == 2:
             print("Invalid no of Arguments. Type 'help' for guide")
             return

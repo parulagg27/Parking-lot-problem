@@ -40,22 +40,18 @@ def process_input(command_params):
 def process_file(given_file):
     if not os.path.exists(given_file):
         print("Given File %s doesn't exist" % given_file)
-        return False
-    return True
+        return
+    for line in fileinput.input():
+        process_input(line)
 
 
 if __name__ == "__main__":
 
     if len(sys.argv) == 1:
-        p = MyPrompt()
-        p.cmdloop()
+        MyPrompt().cmdloop()
 
     elif len(sys.argv) == 2:
-        file_exists = process_file(sys.argv[1])
-        if file_exists:
-            for line in fileinput.input():
-                process_input(line)
-        # TODO: Handle case in better way when file doesn't exist
+        process_file(sys.argv[1])
 
     else:
-        print("Invalid number of arguments for given command")
+        print("Invalid Arguments")
