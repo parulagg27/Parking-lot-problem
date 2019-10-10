@@ -5,7 +5,7 @@ from parking_lot import ParkingLot
 parking_lot = ParkingLot()
 
 
-class MyPrompt(Cmd):
+class CLI_Prompt(Cmd):
     prompt = 'parkingLot> '
 
     def do_create_parking_lot(self, no_of_slots):

@@ -2,7 +2,7 @@ from parking_lot import ParkingLot
 import sys
 import os
 import fileinput
-from commands import MyPrompt
+from commands import CLI_Prompt
 
 
 parking_lot_operations = ParkingLot()
@@ -48,7 +48,7 @@ def process_file(given_file):
 if __name__ == "__main__":
 
     if len(sys.argv) == 1:
-        MyPrompt().cmdloop()
+        CLI_Prompt().cmdloop()
 
     elif len(sys.argv) == 2:
         process_file(sys.argv[1])
