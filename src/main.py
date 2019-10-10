@@ -4,9 +4,9 @@ import os
 import fileinput
 
 
-parking_lot = ParkingLot()
+parking_lot_operations = ParkingLot()
 
-command_params_len_mapper = {
+parking_operations_command_mapper = {
     "create_parking_lot": 1,
     "park": 2,
     "leave": 1,
@@ -22,12 +22,12 @@ def process_input(command_params):
     command = command_with_params[0]
     params = command_with_params[1:]
 
-    if not hasattr(parking_lot, command):
-        return "Command not found"
+    if not hasattr(parking_lot_operations, command):
+        print("Command not found")
+        return
 
-    parking_operation = getattr(parking_lot, command)
+    parking_operation = getattr(parking_lot_operations, command)
     std_out = parking_operation(*params)
-
     if std_out:
         print(std_out)
 
