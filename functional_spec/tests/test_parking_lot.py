@@ -43,7 +43,6 @@ class TestParkingLot(unittest.TestCase):
 
     def test_leave(self):
         self.parking.leave(1)
-        self.parking.status()
         self.assertTrue(self.parking.slots[self.alloted_slot].available, "Leave failed")
 
         self.assertEqual(self.parking.leave(7), "Slot No. doesn't exist")

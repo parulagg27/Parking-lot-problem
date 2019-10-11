@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "installing dependencies if any..."
+
+echo "building the package ..."
+SETUP_PATH=$(readlink -f "./functional_spec/src/setup.py")
+python $SETUP_PATH build
+
+
+echo "Running test suite"
+
+FULL_PATH=$(readlink -f "./bin/run_functional_tests")
+$FULL_PATH

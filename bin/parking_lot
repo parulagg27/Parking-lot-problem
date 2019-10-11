@@ -2,7 +2,7 @@
 
 if [ -e main ]
 then
-	python ./functional_spec/src/main.py
+	python3 ./functional_spec/src/main.py
 else
-	python ./functional_spec/src/main.py ${1}
+	python3 ./functional_spec/src/main.py ${1}
 fi

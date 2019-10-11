@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd "$(dirname "./functional_spec/tests")"
+
+echo "Testing parking_lot component"
+python tests/test_parking_lot.py
