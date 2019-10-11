@@ -61,44 +61,48 @@ The command will automatically build project, install dependency if any and run 
 This application is fully controlled by command. Run bash parking_lot in bin directory with 2 options:
 
 The inputs commands are expected and taken from the file specified
+
 `parking_lot $ bin/parking_lot [input_filepath]`
 
 Or start the program in interactive mode.
+
 `parking_lot $ bin/parking_lot`
 
 
 ## Commands List:
 Commands can be run both in interactive mode as well by inputting them via text file as stated above.
 
-```parking_lot> create_parking_lot [capacity]```
+1. ```parking_lot> create_parking_lot [capacity]```
 
 Initializes parking lot with given slot capacity. This command must be run first to initialize the parking lot.
 
-```parking_lot> park [car_registration_number] [car_color]```
+2. ```parking_lot> park [car_registration_number] [car_color]```
 
 The Car with given registration number and color alloted in nearest available parking slot.
 Valid registration number example: ```DL-12-AA-9999``` 
+
 If success, program will print ```Allocated slot number: [nearest_slot_number]```. 
+
 If failed, (parking lot is full) will print ```Sorry, parking lot is full```
 
-```parking_lot> leave [slot_number]```
+3. ```parking_lot> leave [slot_number]```
 
 The slot is made available again after the car leaves the parking lot.
 It requries slot_number of car going out/leaving as it's parameter
 
-```parking_lot> status``` 
+4. ```parking_lot> status``` 
 
 For print parking area status in table format. Slot No.|  Registration No | Colour
 
-```parking_lot> registration_numbers_for_cars_with_colour [car_color] ```
+5. ```parking_lot> registration_numbers_for_cars_with_colour [car_color] ```
 
 It prints all registration numbers of all cars with given ```colour```, present inside parking_lot
 
 
-```parking_lot> slot_numbers_for_cars_with_colour [car_color] ```
+6. ```parking_lot> slot_numbers_for_cars_with_colour [car_color] ```
 
 It prints all slot numbers with specific car color for cars parked inside lot.
 
-```parking_lot> slot_number_for_registration_number [car_registration_number] ```
+7. ```parking_lot> slot_number_for_registration_number [car_registration_number] ```
 
 It prints slot number of car whose registration number is given, provided car is present inside parking lot.
