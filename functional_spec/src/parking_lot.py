@@ -48,7 +48,7 @@ class ParkingLot(object):
         # unique registration number check
         for slot in self.slots.values():
             if not slot.available and slot.car.reg_no == reg_no:
-                return "Car with given registration no. already exist"
+                return "Car with given reg no. already exist"
 
         available_slot.car = Car(reg_no, colour)
         available_slot.available = False
@@ -108,7 +108,7 @@ class ParkingLot(object):
                 slot_numbers.append(str(slot.slot_no))
 
         if not slot_numbers:
-            return "Not Found"
+            return "Not found"
         return ', '.join(slot_numbers)
 
 
