@@ -1,4 +1,4 @@
-# GOJEK - Parking Lot Problem
+
 
 The car parking lot project for Automatic ticekting system has been written in <u>__Python__</u>
 
